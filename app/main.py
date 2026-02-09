@@ -5,10 +5,12 @@ from __future__ import annotations
 class Animal:
     alive: list[Animal] = []
 
-    def __init__(self,
-                 name: str,
-                 health: int = 100,
-                 hidden: bool = False) -> None:
+    def __init__(
+            self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
@@ -32,5 +34,5 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(herbivore: Herbivore) -> None:
-        if not herbivore.hidden and isinstance(herbivore, Herbivore):
+        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.bitten(50)
